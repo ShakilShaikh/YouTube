@@ -1,0 +1,88 @@
+<!-- #Timer-->
+<html>
+<head><title>Time Machine</title>
+<meta content="shakil.loki" name="keywords">
+<meta content="Time Machine" name="keywords">
+<meta content="John Titor" name="keywords">
+</head>
+<body bgcolor=black text=green> 
+<center>
+<h1><tt>Time Machine</tt></h1>
+<table style="border: solid;" width=100%>
+<tr><td align=middle>Year</td><td align=middle>Month</td><td align=middle>Date</td><td align=middle>Hour</td><td align=middle>Mins</td><td align=middle>Sec</td></><td align=middle>Mils</td></tr>
+<tr><td align=middle id='year' style="border:solid; color: #46ff33;"></td><td align=middle id='month'  style="border:solid; color: #46ff33;"></td><td align=middle id='date' style="border:solid; color: #46ff33;"></td><td align=middle id='hour' style="border:solid; color: #46ff33;"></td><td align=middle id='mins' style="border:solid; color: #46ff33;"></td><td align=middle id='sec' style="border:solid; color: #46ff33;"></td><td align=middle id='mils' style="border:solid; color: #46ff33;"></td></tr>
+</table>
+<br>
+<br>
+<form>
+<table style="border: solid;" width=100%>
+<tr><td><input type=text name='year' placeholder="Year" style="border:solid;"></td><td><input type=text name='month' placeholder="Month" style="border:solid;"></td><td><input type=text name='date' placeholder="Date" style="border:solid;"></td><td><input type=text name='hour' placeholder="Hour" style="border:solid;"></td><td><input name='mins' type=text placeholder="Minutes" style="border:solid;"></td><td><input name='sec' type=text placeholder="Seconds" style="border:solid;"></td><td></tr>
+</table>
+<br>
+<button onclick="check(this.form)">Jump into Time</button>
+</form>
+</center>
+<script>
+setInterval(function(){
+d= new Date()
+var year=d.getFullYear()
+var month=d.getMonth()+1
+var date=d.getDate()
+var hour=d.getHours()
+var mins=d.getMinutes()
+var sec=d.getSeconds()
+var mils=d.getMilliseconds()
+document.getElementById('year').innerHTML=year
+document.getElementById('month').innerHTML=month
+document.getElementById('date').innerHTML=date
+document.getElementById('hour').innerHTML=hour
+document.getElementById('mins').innerHTML=mins
+document.getElementById('sec').innerHTML=sec
+document.getElementById('mils').innerHTML=mils
+},10)
+function check(form){
+	d=new Date()
+	var year=form.year.value
+	var month=form.month.value
+	var date=form.date.value
+	var hour=form.hour.value
+	var mins=form.mins.value
+	var sec=form.sec.value
+	if(year==d.getFullYear() && month==d.getMonth() && date==d.getDate()){
+		if(hour==d.getHours() && mins==d.getMinutes() && sec==d.getSeconds()){
+			alert('Are you kidding !')
+		}else if(hour==d.getHours() && mins==d.getMinutes() && sec!=d.getSeconds()){
+			alert("We've reached !")
+		}else if(hour==d.getHours() && mins!=d.getMinutes() && sec!=d.getSeconds()){
+			alert("We've reached !")
+		}else if(hour=='' && mins=='' && sec==''){
+			alert("We've reached !")
+		}else {
+			alert("Failed to open the Portal !")
+		}
+	}else if(year==d.getFullYear() && month==d.getMonth() && date!=d.getDate()){
+		if (date!=''){
+			alert('Failed to Open the Portal !')
+		}else{
+			alert("We've reached")
+		}
+	}else if(year==d.getFullYear() && month!=d.getMonth()){
+		if (month!=''){
+			alert('Failed to Open the Portal !')
+		}else{
+			alert("We've reached")
+		}
+	}else if(year!=d.getFullYear()){
+		if (year!=''){
+			alert('Failed to Open the Portal !')
+		}else{
+			alert("Please Enter Any Time !")
+		}
+	}else{
+		alert("Please Enter Any Time !")
+	}
+}
+</script>
+
+</body>
+</html>
